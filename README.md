@@ -1,4 +1,4 @@
-# FullStack CRM
+# FullStack CRM (Ведется разработка)
 ## Разработка CRM системы на MEAN STACK
     MongoDB
     Express.js
