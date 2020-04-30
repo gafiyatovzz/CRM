@@ -1,0 +1,76 @@
+<div class="page-title">
+  <h4>Список мастеров</h4>
+  <button
+  class="waves-effect waves-light btn grey darken-1"
+  routerLink="/category/new"
+  >Добавить мастера</button>
+</div>
+
+<div class="row"
+  *ngIf="categories$ | async as categories; else loader"
+>
+  <div class="col s12">
+    <table>
+      <thead>
+        <tr>
+            <th>Сотрудник</th>
+            <th>Должность</th>
+            <th>Статус</th>
+        </tr>
+      </thead>
+
+      <tbody class="collection"
+        *ngIf="categories.length !== 0; else empty"
+      >
+        <tr
+          class="collection-item"
+           *ngFor="let category of categories"
+           [routerLink]="['/category', category._id]">
+          <td>
+            {{category.name}}
+          </td>
+          <td>
+            {{category.position}}
+          </td>
+          <td><span class="new badge red" data-badge-caption="на выезде"></span></td>
+        </tr>
+
+      </tbody>
+    </table>
+    <ng-template #empty>
+      <div class="s12 center">
+        В базе нет ни одного мастера
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #loader>
+  <app-loader></app-loader>
+</ng-template>
+
+
+<!--
+<div class="row"
+  *ngIf="categories$ | async as categories; else loader"
+>
+  <div class="col s12">
+      <div class="collection"
+        *ngIf="categories.length !== 0; else empty"
+      >
+          <a
+          class="collection-item"
+          *ngFor="let category of categories"
+          [routerLink]="['/category', category._id]"
+          >
+          {{category.name}}
+        </a>
+
+      </div>
+      <ng-template #empty>
+        <div class="center">
+          В базе нет ни одного мастера
+        </div>
+      </ng-template>
+  </div>
+</div> -->
